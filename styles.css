@@ -1,0 +1,27 @@
+/*
+* {
+    border: 1px solid red;
+}*/
+
+body {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+button {
+    max-width: 10rem;
+    margin: 1rem; 
+    border-radius: 20px;
+    height: 1.5rem;
+    border: 2px solid black;
+}
+
+#main-container {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    border: 2px solid black;
+}
+
+
