@@ -3,10 +3,50 @@
     border: 1px solid red;
 }*/
 
+
+
 body {
     display: flex;
+    justify-content: center;
+    font-family:Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+.container {
+    display: flex;
     align-items: center;
+    margin: 0 3rem;
+}
+
+#settings-border {
     flex-direction: column;
+    justify-content: center;
+    border: 2px solid black;
+    border-radius: 1rem;
+    width: 20rem;
+    display: flex;
+}
+
+#settings-title {
+    text-decoration: underline;
+    font-size: 2.5rem;
+}
+
+.settings-label {
+    font-size: 1rem;
+    margin-right: 3rem;
+    white-space: nowrap;
+}
+
+#brush-slider-container * {
+    margin: 5px;
+}
+
+#canvas-slider-container * {
+    margin: 5px;
+}
+
+#current-canvas-size {
+    white-space: nowrap;
 }
 
 button {
@@ -17,11 +57,28 @@ button {
     border: 2px solid black;
 }
 
-#main-container {
-    display: flex;
-    justify-content: center;
-    align-content: center;
-    border: 2px solid black;
+#right-main-container {
+    flex-direction: column;
 }
 
+#main-container {
+    border: 2px solid black;
+}
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+@import url('https://fonts.googleapis.com/css?family=Lato');
+@import url('https://fonts.googleapis.com/css?family=Fira+Sans');
 
+#title {
+    font-size: 3rem;
+    margin: 0;
+    text-decoration: underline;
+}
+
+#subtitle {
+    font-size: 1.5rem;
+    margin: 1rem;
+}
+
+.child-div {
+    border: 0.1px solid black;
+}

@@ -4,12 +4,46 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Etch-a-Sketch</title>
+    <title>PixelPro</title>
     <link rel="stylesheet" href="styles.css">
     <script src = "./script.js" defer></script>
 </head>
 <body>
-    <button>I want a bigger grid!</button>
-    <div class="container" id="main-container"></div>
+    <div class="container" id="settings-container">
+        <div class="container" id="settings-border">
+            <h1 id="settings-title">Settings</h1>
+            <div class="container" id="canvas-color-container">
+                <h6 class="settings-label" id="canvas-color-label">Canvas Color </h6>
+                <input type="color" value='#FFFFFF' class="color-picker" id="canvas-color">
+            </div>
+            <div class="container" id="brush-color-container">
+                <h6 class="settings-label" id="brush-color-label">Brush Color </h6>
+                <input type="color" class="color-picker" id="brush-color">
+            </div>
+            <div class = "container" id="brush-slider-container">
+                <h6 class="settings-label" id="brush-size-label">Brush Size </h6>
+                <div class = "container" id="brush-slider-container2">
+                    <input type="range" min="1" max="50" value="1" class="slider" id="brush-size-slider" >
+                    <h6 id="current-brush-size"></h6>
+                </div>  
+            </div>
+            <button class="settings-button" id="eraser-button" >Toggle Eraser</button>
+            <div class="container" id="canvas-slider-container">
+                <h6 class="settings-label" id="canvas-size-label">Canvas Size </h6>
+                <div class="container" id="slider-container2">
+                    <input type="range" min="1" max="100" value="16" class="slider" id="canvas-size-slider" >
+                    <h6 id="current-canvas-size"></h6>
+                </div>  
+            </div>
+            <button class="settings-button" id="clear-button" >Clear Canvas</button>
+            
+
+        </div>
+    </div>
+    <div class="container" id="right-main-container">
+        <h1 id="title">PixelPro</h1>
+        <h3 id="subtitle">Create stunning pixel art with ease</h3>
+        <div class="container" id="main-container"></div>
+    </div>
 </body>
 </html>
