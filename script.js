@@ -1,7 +1,7 @@
 const container = document.querySelector("#main-container");
 
-const height = window.innerHeight - 150;
-const width = window.innerWidth - 150;
+const height = window.innerHeight - 50;
+const width = window.innerWidth - 50;
 
 let allowDraw = false; //used for enabling drawing on click on canvas container
 
@@ -58,15 +58,50 @@ eraserButton.addEventListener('click', () => {
 function toggleEraser() {
     if (brushColor !== canvasColor) {
         brushColor = canvasColor;
+        eraserButton.setAttribute("class", "selected");
     } else {
         brushColor = temp;
+        eraserButton.setAttribute("class", "settings-button");
     }
 }
 
 // Clear canvas
 const clearButton = document.querySelector('#clear-button');
+const clearConfirmButton = document.getElementById("clear-confirm-button");
+const clearCancelButton = document.getElementById("clear-cancel-button");
+const clearModal = document.getElementById("confirm-clear");
+
 clearButton.addEventListener('click', () => {
+    clearModal.style.display = "flex";
+});
+
+clearConfirmButton.addEventListener("click", function() {
+    clearModal.style.display = "none";
     createGrid(canvasSize);
+});
+  
+clearCancelButton.addEventListener("click", function() {
+    clearModal.style.display = "none";
+});
+
+// Toggle grid lines
+let grid = true;
+const gridButton = document.querySelector('#grid-button');
+gridButton.addEventListener('click', () => {
+    console.log(grid)
+    if (grid == false) {
+        let childDivs = document.querySelectorAll('.child-div');
+        childDivs.forEach(childDiv => {
+            childDiv.setAttribute('class', 'child-div-border');
+        });
+        grid = true;
+    } else {
+        let childDivs = document.querySelectorAll('.child-div-border');
+        childDivs.forEach(childDiv => {
+            childDiv.setAttribute('class', 'child-div');
+        });
+        grid = false;
+    }   
 });
 
 // Allow Drawing event listeners
@@ -93,6 +128,10 @@ container.addEventListener("mouseup", () => {
 const canvasSizeSlider = document.querySelector('#canvas-size-slider');
 const canvasSizeLabel = document.querySelector('#current-canvas-size');
 
+const sizeConfirmButton = document.getElementById("size-confirm-button");
+const sizeCancelButton = document.getElementById("size-cancel-button");
+const sizeModal = document.getElementById("confirm-size-change");
+
 let canvasSize = canvasSizeSlider.value;
 canvasSizeLabel.textContent = `${canvasSize.toString()} x ${canvasSize.toString()}`;
 
@@ -101,13 +140,25 @@ canvasSizeSlider.addEventListener('input', () => {
 });
 
 canvasSizeSlider.addEventListener('mouseup', () => {
+    sizeModal.style.display = "flex";
+});
+
+sizeConfirmButton.addEventListener("click", function() {
+    sizeModal.style.display = "none";
     if (canvasSize !== canvasSizeSlider.value) {
         canvasSize = canvasSizeSlider.value;
         createGrid(canvasSize);
     }
+    
+});
+  
+sizeCancelButton.addEventListener("click", function() {
+    sizeModal.style.display = "none";
+    canvasSizeSlider.value = canvasSize;
+    canvasSizeLabel.textContent = `${canvasSizeSlider.value.toString()} x ${canvasSizeSlider.value.toString()}`;
 });
 
-// Brush Size
+// Brush Size slider
 const brushSizeSlider = document.querySelector('#brush-size-slider');
 const brushSizeLabel = document.querySelector('#current-brush-size');
 
@@ -118,6 +169,13 @@ brushSizeSlider.addEventListener('input', () => {
     brushSizeLabel.textContent = brushSizeSlider.value.toString();
     brushSize = brushSizeSlider.value;
 });
+
+// Shading level slider
+const shadingSlider = document.querySelector('#shading-slider');
+const shadingLabel = document.querySelector('#shading-label');
+
+
+
 
 
 function addColor(div) {
@@ -149,7 +207,12 @@ function createGrid(gridSize) {
         for (let j = 0; j < gridSize; j++) {
             let childDiv = document.createElement('div');
             childDiv.setAttribute('id', `p${i+1}-c${j+1}`);
-            childDiv.setAttribute('class', 'child-div');
+            if (grid === true) {
+                childDiv.setAttribute('class', 'child-div-border');
+            } else {
+                childDiv.setAttribute('class', 'child-div');
+            }
+            
             parentDiv.appendChild(childDiv);
             //childDiv.textContent = j+1;
             if (width > height) {
@@ -160,9 +223,14 @@ function createGrid(gridSize) {
             childDiv.style.backgroundColor = canvasColor;
         }
     }
-    
-    const childDivs = document.querySelectorAll(".child-div");
 
+    let childDivs = 0;
+    if (grid === true) {
+        childDivs = document.querySelectorAll(".child-div-border");
+    } else {
+        childDivs = document.querySelectorAll(".child-div");
+    }
+    
     childDivs.forEach(div => {
         div.addEventListener("mouseover", () => {
             if (allowDraw === true) {

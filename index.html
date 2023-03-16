@@ -10,39 +10,76 @@
 </head>
 <body>
     <div class="container" id="settings-container">
+        <h1 id="title">PixelPro</h1>
+        <h3 id="subtitle">Create stunning pixel art with ease</h3>
         <div class="container" id="settings-border">
             <h1 id="settings-title">Settings</h1>
-            <div class="container" id="canvas-color-container">
-                <h6 class="settings-label" id="canvas-color-label">Canvas Color </h6>
-                <input type="color" value='#FFFFFF' class="color-picker" id="canvas-color">
+            <div class="settings-container" id="color-options">
+                <div class="color-settings-container">
+                    <div class="border">
+                        <h6 class="settings-label" id="canvas-color-label">Canvas Color: </h6>
+                        <input type="color" value='#FFFFFF' class="color-picker" id="canvas-color">
+                    </div>
+                    <div class="slider-settings-container border" id="canvas-slider-container">
+                        <h6 class="settings-label" id="canvas-size-label">Canvas Size:</h6>
+                        <div id="slider-container2">
+                            <input type="range" min="1" max="100" value="16" class="slider" id="canvas-size-slider" >
+                            <h6 id="current-canvas-size"></h6>
+                        </div>  
+                    </div>
+                </div>
+                <div class="color-settings-container">
+                    <div class="border">
+                        <h6 class="settings-label" id="brush-color-label">Brush Color: </h6>
+                        <input type="color" class="color-picker" id="brush-color">
+                    </div>
+                    <div class = "slider-settings-container border" id="brush-slider-container">
+                        <h6 class="settings-label" id="brush-size-label">Brush Size: </h6>
+                        <div id="brush-slider-container2">
+                            <input type="range" min="1" max="50" value="1" class="slider" id="brush-size-slider" >
+                            <h6 id="current-brush-size"></h6>
+                        </div>  
+                    </div>
+                </div>
             </div>
-            <div class="container" id="brush-color-container">
-                <h6 class="settings-label" id="brush-color-label">Brush Color </h6>
-                <input type="color" class="color-picker" id="brush-color">
-            </div>
-            <div class = "container" id="brush-slider-container">
-                <h6 class="settings-label" id="brush-size-label">Brush Size </h6>
-                <div class = "container" id="brush-slider-container2">
-                    <input type="range" min="1" max="50" value="1" class="slider" id="brush-size-slider" >
-                    <h6 id="current-brush-size"></h6>
+            <div class = "slider-settings-container border" id="shading-slider-container">
+                <h6 class="settings-label" id="shading-label">Shading Level: </h6>
+                <div id="shading-slider-container2">
+                    <input type="range" min="-10" max="10" value="10" class="slider" id="shading-slider" >
+                    <h6 id="current-shading-level"></h6>
                 </div>  
             </div>
+            
             <button class="settings-button" id="eraser-button" >Toggle Eraser</button>
-            <div class="container" id="canvas-slider-container">
-                <h6 class="settings-label" id="canvas-size-label">Canvas Size </h6>
-                <div class="container" id="slider-container2">
-                    <input type="range" min="1" max="100" value="16" class="slider" id="canvas-size-slider" >
-                    <h6 id="current-canvas-size"></h6>
-                </div>  
-            </div>
+            <button class="settings-button" id="grid-button" >Toggle Grid Lines</button>
             <button class="settings-button" id="clear-button" >Clear Canvas</button>
+
+            <div id="confirm-clear">
+                <div class="modal-content">
+                    <h2>Confirmation</h2>
+                    <p>Are you sure you want to clear the canvas?</p>
+                    <div id="clear-modal-buttons">
+                        <button id="clear-confirm-button">Yes</button>
+                        <button id="clear-cancel-button">No</button>
+                    </div>
+                </div>
+            </div>
+            <div id="confirm-size-change">
+                <div class="modal-content">
+                    <h2>Confirmation</h2>
+                    <p>Are you sure you want to change the canvas size?</p>
+                    <b>This will delete everything drawn on the current canvas.</b>
+                    <div id="size-modal-buttons">
+                        <button id="size-confirm-button">Yes</button>
+                        <button id="size-cancel-button">No</button>
+                    </div>
+                </div>
+            </div>
             
 
         </div>
     </div>
     <div class="container" id="right-main-container">
-        <h1 id="title">PixelPro</h1>
-        <h3 id="subtitle">Create stunning pixel art with ease</h3>
         <div class="container" id="main-container"></div>
     </div>
 </body>
