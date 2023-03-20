@@ -104,7 +104,7 @@ gridButton.addEventListener('click', () => {
     }   
 });
 
-// Allow Drawing event listeners
+// Allow Drawing when holding click
 container.addEventListener("mousedown", (e) => {
     allowDraw = true;
     let divID = e.target.id;
