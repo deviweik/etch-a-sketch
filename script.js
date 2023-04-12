@@ -5,7 +5,7 @@ const width = window.innerWidth - 50;
 
 let allowDraw = false; //used for enabling drawing on click on canvas container
 
-// Helper functions
+// rgb to hex function - from chatgpt
 function rgbToHex(rgb) {
     var match = rgb.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
     if (!match) {
